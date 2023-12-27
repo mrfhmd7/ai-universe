@@ -30,7 +30,14 @@ const Card = () => {
                          ></SingleData>)
                     }
                </div>
-               <span onClick={handleShowAll}><Button>See More</Button></span>
+               {
+                    !showAll && (
+                         <div className='text-center'>
+                              <span className='inline-block ' onClick={handleShowAll}><Button>See More</Button></span>
+                         </div>
+                    )  
+                    // <span><Button>Show less</Button></span>
+               }
                
           </>
      );
