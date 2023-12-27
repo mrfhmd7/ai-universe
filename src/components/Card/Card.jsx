@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import SingleData from '../SingleData/SingleData';
+import Button from '../Button/Button';
 
 const Card = () => {
      const [values, setValues] = useState([]);
+
+     const [showAll, setShowAll] = useState(false);
+
+     const handleShowAll = () => { 
+          setShowAll(true);
+     }
 
      useEffect(() => {
           const loadData = async () => {
@@ -14,14 +21,18 @@ const Card = () => {
           loadData();
      }, []);
      return (
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:px-10'>
-               {
-                    values.map(value => <SingleData
-                         value={value}
-                         key={value.id}
-                    ></SingleData>)
-               }
-          </div>
+          <>
+               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:px-10'>
+                    {
+                         values.slice(0, showAll ? 12 : 6).map(value => <SingleData
+                              value={value}
+                              key={value.id}
+                         ></SingleData>)
+                    }
+               </div>
+               <span onClick={handleShowAll}><Button>See More</Button></span>
+               
+          </>
      );
 };
 
