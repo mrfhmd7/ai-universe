@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleData from '../SingleData/SingleData';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 
 const Card = () => {
      const [values, setValues] = useState([]);
@@ -48,7 +49,7 @@ const Card = () => {
                          </div>
                     )  
                }
-               
+               <Modal></Modal>
           </>
      );
 };
