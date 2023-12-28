@@ -3,12 +3,6 @@ import React from "react";
 const Modal = () => {
   return (
     <>
-      <button
-        className="btn"
-        
-      >
-        open modal
-      </button>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-1/2 max-w-5xl">
           <h3 className="font-bold text-lg">Hello!</h3>
