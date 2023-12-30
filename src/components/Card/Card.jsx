@@ -29,7 +29,7 @@ const Card = () => {
                .then((data) => setIdData(data.data));
      }, [uniqueId]);
 
-     console.log(idData);
+     // console.log(idData);
 
      useEffect(() => {
           const loadData = async () => {
@@ -65,7 +65,7 @@ const Card = () => {
                          </div>
                     )  
                }
-               <Modal/>
+               <Modal idData={idData} />
           </>
      );
 };
