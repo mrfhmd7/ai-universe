@@ -3,9 +3,14 @@ import React from "react";
 const SingleData = (props) => {
 //   console.log(props.value);
      const { image, features, name, published_in, id } = props.value;
-     const handleId = (id) => { 
-          console.log(id);
-     }
+
+     // const { setUniqueId } = props.setUniqueId;
+     
+     // seeing id;
+     // const handleId = (id) => {
+     //      console.log(id);
+     // }
+     
   return (
     <>
           <div className="card card-compact w-full h-auto bg-base-100 shadow-2xl">
@@ -18,9 +23,9 @@ const SingleData = (props) => {
                <div className="card-body">
                     <h2 className="card-title font-semibold">Features</h2>
                     {
-                           features.map((feature,index) =>
-                          <p>
-                              {index+1}. {feature}  
+                         features.map((feature, index) =>
+                          <p key={index}>
+                                   {index + 1}. {feature},
                          </p>)
                     }  
                     <hr className="border-2 border-stone-400 my-3" />
@@ -35,8 +40,8 @@ const SingleData = (props) => {
                               <p className="m-auto pl-2">{published_in}</p>
                          </div>
                          <div>
-                                <button htmlFor="my_modal_4" className="cursor-pointer" onClick={() => document.getElementById("my_modal_4").showModal()}>
-                                   <svg onClick={()=> handleId(id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                              <button htmlFor="my_modal_4" className="cursor-pointer" onClick={() => document.getElementById("my_modal_4").showModal()}>
+                                   <svg onClick={()=> props.setUniqueId(id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                    </svg>
                               </button>

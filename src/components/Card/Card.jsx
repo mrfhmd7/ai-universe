@@ -8,6 +8,12 @@ const Card = () => {
 
      const [showAll, setShowAll] = useState(false);
 
+     const [uniqueId, setUniqueId] = useState(null);
+
+     const [idData, setIdData] = useState({});
+
+     // console.log(uniqueId);
+
      const handleShowAll = () => { 
           setShowAll(true);
      }
@@ -15,6 +21,15 @@ const Card = () => {
      const handleShowLess = () => { 
           setShowAll(false);
      }
+
+     useEffect(() => {
+          // console.log('hi');
+          fetch(`https://openapi.programming-hero.com/api/ai/tool/${uniqueId}`)
+               .then((res) => res.json())
+               .then((data) => setIdData(data.data));
+     }, [uniqueId]);
+
+     console.log(idData);
 
      useEffect(() => {
           const loadData = async () => {
@@ -32,6 +47,7 @@ const Card = () => {
                          values.slice(0, showAll ? 12 : 6).map(value => <SingleData
                               value={value}
                               key={value.id}
+                              setUniqueId={setUniqueId}
                          ></SingleData>)
                     }
                </div>
@@ -49,7 +65,7 @@ const Card = () => {
                          </div>
                     )  
                }
-               <Modal></Modal>
+               <Modal/>
           </>
      );
 };
