@@ -16,14 +16,14 @@ const Modal = (props) => {
                 <div>
                   <h2 className="text-xl font-semibold">Features</h2>
                   {
-                    Object.values(features || {}).map((feature, index) => (<p>{index+1}. {feature.feature_name}</p>))
+                    Object.values(features || {}).map((feature, index) => (<p key={index}>{index+1}. {feature.feature_name}</p>))
                   }
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold">Integrations</h2>
                   {
                     // integrations && integrations.map(integration =>(<p>{integration}</p>))
-                    integrations &&integrations.map((integration, index) => (<p>{ integration? integration : "Not Found"}</p>))
+                    integrations &&integrations.map((integration, index) => (<p key={index}>{ integration? integration : "Not Found"}</p>))
                   }
                 </div>
               </div>

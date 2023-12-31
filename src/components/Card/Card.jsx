@@ -22,6 +22,13 @@ const Card = () => {
           setShowAll(false);
      }
 
+     const handleSort = () => { 
+          const sortedData = values.sort((a, b) => {
+               return new Date(a.published_in) - new Date(b.published_in)
+          });
+          setValues([...values, sortedData]);
+     }
+
      useEffect(() => {
           // console.log('hi');
           fetch(`https://openapi.programming-hero.com/api/ai/tool/${uniqueId}`)
@@ -42,6 +49,9 @@ const Card = () => {
      }, []);
      return (
           <>
+               <span onClick={handleSort}>
+               <Button>Sort by Date</Button>
+               </span>
                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:px-10'>
                     {
                          values.slice(0, showAll ? 12 : 6).map(value => <SingleData
